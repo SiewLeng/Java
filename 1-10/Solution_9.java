@@ -1,6 +1,8 @@
+// https://www.hackerrank.com/challenges/java-end-of-file/problem?isFullScreen=true
+
 import java.util.Scanner;
 
-public class Solution_4 {
+public class Solution_9 {
 
     public static void main(String[] args) {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */

@@ -1,8 +1,8 @@
+// https://www.hackerrank.com/challenges/java-datatypes/problem?isFullScreen=true
+
 import java.util.*;
 
-
-
-class Solution_3{
+class Solution_8{
     public static void main(String []argh)
     {
         Scanner sc = new Scanner(System.in);

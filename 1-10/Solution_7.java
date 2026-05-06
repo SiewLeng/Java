@@ -1,6 +1,8 @@
+// https://www.hackerrank.com/challenges/java-loops/problem?isFullScreen=true
+
 import java.util.Scanner;
 
-class Solution_2 {
+class Solution_7 {
     private static String combined(int[] arr) {
         String s = "";
         for (int i = 0; i < arr.length - 1; i++) {

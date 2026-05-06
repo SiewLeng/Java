@@ -1,6 +1,8 @@
+// https://www.hackerrank.com/challenges/java-static-initializer-block/problem?isFullScreen=true
+
 import java.util.*;
 
-public class Solution_5 {
+public class Solution_10 {
 
 static int B = 0;
 static int H = 0;

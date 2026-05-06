@@ -1,6 +1,8 @@
+// https://www.hackerrank.com/challenges/java-stdin-stdout/problem?isFullScreen=true
+
 import java.util.Scanner;
 
-public class Solution_3 {
+public class Solution_4 {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
