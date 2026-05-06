@@ -11,6 +11,11 @@ public class Solution_16 {
         int end = in.nextInt();
 
         in.close();
-        System.out.println(S.substring(start, end));
+        // System.out.println(S.substring(start, end));
+        String result = "";
+        for (int i = start; i < end; i++) {
+            result = result + S.charAt(i);
+        }
+        System.out.println(result);
     }
 }
