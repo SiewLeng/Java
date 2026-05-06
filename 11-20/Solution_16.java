@@ -1,10 +1,6 @@
-https://www.hackerrank.com/challenges/java-substring/problem?isFullScreen=true
+// https://www.hackerrank.com/challenges/java-substring/problem?isFullScreen=true
 
-import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
 
 public class Solution_16 {
 
@@ -14,6 +10,7 @@ public class Solution_16 {
         int start = in.nextInt();
         int end = in.nextInt();
 
+        in.close();
         System.out.println(S.substring(start, end));
     }
 }
