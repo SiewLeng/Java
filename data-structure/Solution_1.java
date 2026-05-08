@@ -76,6 +76,21 @@ public class Solution_1 {
         }
         return false;
     }
+    
+    /* 
+    static boolean hasCycle(SinglyLinkedListNode head) {
+        SinglyLinkedListNode slow = head;
+        SinglyLinkedListNode fast = head;
+        while (slow != null && fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+    */
 
     private static final Scanner scanner = new Scanner(System.in);
 
