@@ -14,7 +14,7 @@ class Node {
     }
 }
 
-class Solution {
+class Solution_4 {
 
 	/* 
     
