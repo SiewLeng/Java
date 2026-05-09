@@ -10,14 +10,14 @@ public class MergeSort {
             for (int i = 0; i < r - m; i++) {
                 r_arr[i] = arr[i + m + 1];
             }
-            System.out.println("l: " + l + " m: " + m + " r: " + r);
+            System.out.println("\n l: " + l + " m: " + m + " r: " + r);
             System.out.println("\nl_arr: ");
             for (int i= 0; i < l_arr.length; i++) {
-                System.out.print(l_arr[i]);
+                System.out.print(l_arr[i] + " ");
             }
             System.out.println("\nr_arr: ");
             for (int i= 0; i < r_arr.length; i++) {
-                System.out.print(r_arr[i]);
+                System.out.print(r_arr[i] + " ");
             }
             int l_p = 0;
             int r_p = 0;
@@ -44,12 +44,12 @@ public class MergeSort {
     public static void main(String[] args) {
         int[] arr = {1, 3, 5, 7, 2, 4, 6, 8, 10};
         for (int i= 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
+            System.out.print(arr[i] + " ");
         }
         merge(arr, 0, 3, arr.length - 1);
         System.out.println("");
         for (int i= 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
+            System.out.print(arr[i] + " ");
         }
     }
 }
