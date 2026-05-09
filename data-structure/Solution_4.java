@@ -23,7 +23,7 @@ class Solution {
     	Node left;
     	Node right;
 	*/
-
+    
 	public static void levelOrder(Node root) {
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
@@ -34,6 +34,21 @@ class Solution {
             System.out.print(node.data + " ");
         }
     }
+    
+    /* 
+    public static void levelOrder(Node root) {
+        ArrayList<Node> nodes = new ArrayList<>();
+        nodes.add(root);
+        int index = 0;
+        while (index < nodes.size()) {
+            Node node = nodes.get(index); 
+            if (node.left != null) nodes.add(node.left);
+            if (node.right != null) nodes.add(node.right);
+            index += 1;
+            System.out.print(node.data + " ");
+        }
+    }
+    */
 
 	public static Node insert(Node root, int data) {
         if(root == null) {
