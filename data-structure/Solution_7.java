@@ -35,13 +35,11 @@ class Result {
         ArrayList<ArrayList<Integer>> empty = new ArrayList<>();
         for (int i = 0; i < crossword.size(); i++) {
             String row  = crossword.get(i);
-            System.out.println("row: " + row);
             int start = identifyEmptySpace(row)[0];
             int end = identifyEmptySpace(row)[1];
             if (start!= -1 && end!= -1) {
                 ArrayList<Integer> result = new ArrayList<>(List.of(i, start, end, 0));
                 empty.add(result);
-                System.out.println(i + " " + start + " " + end);
             }
         }
         for (int j = 0; j < crossword.size(); j++) {
@@ -49,13 +47,13 @@ class Result {
             for (int i = 0; i < crossword.size(); i++) {
                 col = col + crossword.get(i).charAt(j);
             }
-            System.out.println("col: " + col);
+            // System.out.println("col: " + col);
             int start = identifyEmptySpace(col)[0];
             int end = identifyEmptySpace(col)[1];
             if (start != -1 && end != -1) {
                 ArrayList<Integer> result = new ArrayList<>(List.of(j, start, end, 1));
                 empty.add(result);
-                System.out.println(j + " " + start + " " + end);
+                // System.out.println(j + " " + start + " " + end);
             }
         }
         return empty;
@@ -102,14 +100,103 @@ class Result {
         }
     }
 
-    public static List<String> crosswordPuzzle(List<String> crossword, String words) {
-        // Write your code here
-        ArrayList<ArrayList<Integer>> emptySpaces = getEmptySpaces(crossword);
+    static void unfillCrossWord(char[][] crossword, String word, ArrayList<Integer> toBeUnFilled) {
+        int start = toBeUnFilled.get(1);
+        if (toBeUnFilled.get(3) == 0) {
+            // horizontal
+            int rowIndex = toBeUnFilled.get(0);
+            for (int j = 0; j < word.length(); j++) {
+                char c = crossword[rowIndex][j + start];
+                if (c != '-') crossword[rowIndex][j + start] = '-';
+            }
+        } else {
+            // vertical
+            int colIndex = toBeUnFilled.get(0);
+            for (int i = 0; i < word.length(); i++) {
+                char c = crossword[i + start][colIndex];
+                if (c != '-') crossword[i + start][colIndex] = '-';
+            }
+        }
+    }
+
+    static char[][] convertListOfStringToDoubleArrayChar(List<String> crossword) {
         char[][] crosswordPuzzle = new char[crossword.size()][crossword.size()];
         for (int i = 0; i < crossword.size(); i++) {
             for (int j = 0; j < crossword.get(i).length(); j++) {
                 crosswordPuzzle[i][j] = crossword.get(i).charAt(j);
             }
+        }
+        return crosswordPuzzle;
+    }
+
+    static List<String> convertDoubleArrayCharToListOfString(char[][] crosswordPuzzle) {
+        List<String> crossword = new ArrayList<>();
+        for (char[] row : crosswordPuzzle) {
+            String s = "";
+            for (int j = 0; j < row.length; j++) {
+                s = s + row[j];
+            }
+            crossword.add(s);
+        }
+        return crossword;
+    }
+
+    static boolean recursiveFill(char[][] crossword, List<String> wordList, ArrayList<ArrayList<Integer>> emptySpaces, int index) {
+        if (index == emptySpaces.size()) return true;
+        for (String word: wordList) {
+            if(isValidFill(crossword, word, emptySpaces.get(index))) {
+                fillCrossWord(crossword, word, emptySpaces.get(index));
+                List<String> newWordList = new ArrayList<>();
+                for (String newword: wordList) {
+                    if (newword.compareTo(word) != 0) newWordList.add(newword);
+                }
+                if (recursiveFill(crossword, newWordList, emptySpaces, index + 1)) {
+                    return true;
+                }
+                unfillCrossWord(crossword, word, emptySpaces.get(index));
+            }
+        }
+        return false;
+    }
+
+    public static List<String> crosswordPuzzle(List<String> crossword, String words) {
+        // Write your code here
+        ArrayList<ArrayList<Integer>> emptySpaces = getEmptySpaces(crossword);
+        /* 
+        for (ArrayList<Integer> ans:emptySpaces) {
+            String s = "";
+            for (int i: ans) {
+                s = s + " " + i;
+            }
+            System.out.println(s);
+        }
+        */
+        List<String> wordList = Arrays.asList(words.split(";"));
+        /* 
+        for (int i = 0; i < wordList.size(); i++) {
+            System.out.println(i + " " + wordList.get(i));
+        }
+        */
+        char[][] crosswordPuzzle = convertListOfStringToDoubleArrayChar(crossword);
+        /* 
+        if (isValidFill(crosswordPuzzle, wordList[1], emptySpaces.get(0))) {
+            fillCrossWord(crosswordPuzzle, wordList[1], emptySpaces.get(0));
+        } 
+        if (isValidFill(crosswordPuzzle, wordList[3], emptySpaces.get(1))) {
+            fillCrossWord(crosswordPuzzle, wordList[3], emptySpaces.get(1));
+        } 
+        if (isValidFill(crosswordPuzzle, wordList[0], emptySpaces.get(2))) {
+            fillCrossWord(crosswordPuzzle, wordList[0], emptySpaces.get(2));
+        } 
+         if (isValidFill(crosswordPuzzle, wordList[2], emptySpaces.get(3))) {
+            fillCrossWord(crosswordPuzzle, wordList[2], emptySpaces.get(3));
+        } 
+        */
+        // logic
+        recursiveFill(crosswordPuzzle, wordList, emptySpaces, 0);
+        crossword = convertDoubleArrayCharToListOfString(crosswordPuzzle);
+        for (String row : crossword) {
+            System.out.println(row);
         }
         return crossword;
     }
