@@ -2,7 +2,7 @@
 
 import java.util.*;
 
-public class Solution_15 {
+public class Solution_1 {
     private static String upperCaseFirstLetter(String s) {
         return s.substring(0, 1).toUpperCase() + s.substring(1);
     }

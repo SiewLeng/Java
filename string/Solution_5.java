@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class Solution_19 {
+public class Solution_5 {
 
     static int[] countAlphabets(String a) {
         a = a.toLowerCase();

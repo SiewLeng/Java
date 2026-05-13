@@ -2,7 +2,7 @@
 
 import java.util.*;
 
-public class Solution_18 {
+public class Solution_4 {
 
     public static void main(String[] args) {
         

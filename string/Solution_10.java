@@ -9,7 +9,7 @@ class UsernameValidator {
 }
 
 
-public class Solution_25 {
+public class Solution_10 {
     private static final Scanner scan = new Scanner(System.in);
     
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-// https://www.hackerrank.com/challenges/java-currency-formatter/problem?isFullScreen=true
+// https://www.hackerrank.com/challenges/java-date-and-time/problem?isFullScreen=true
 
 import java.io.*;
 import java.util.*;

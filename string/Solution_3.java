@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class Solution_17 {
+public class Solution_3 {
 
     private static int myCompareTo(String s1, String s2) {
         String shorter = s1;
