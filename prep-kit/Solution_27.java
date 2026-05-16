@@ -38,9 +38,10 @@ class Result {
         String[] tokens = sessionString.split("\\*");
         int max = 0;
         for (String token:tokens) {
-            int maxSubLength = checkMaxDistinctSubstringLengthinCharacterString(token);
-            if (maxSubLength > max) max = maxSubLength;
-
+            if (token.length() > 0) {
+                int maxSubLength = checkMaxDistinctSubstringLengthinCharacterString(token);
+                if (maxSubLength > max) max = maxSubLength;
+            }
         }
         return max;
     }
