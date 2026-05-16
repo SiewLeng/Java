@@ -13,26 +13,34 @@ class Result {
      * The function is expected to return an INTEGER.
      * The function accepts STRING sessionString as parameter.
      */
+    private static int checkMaxDistinctSubstringLengthinCharacterString(String s) {
+         int max = 1;
+        int l = 0;
+        int r = 0;
+        Set <Character> set = new HashSet<>();
+        set.add(s.charAt(l));
+        while (r < s.length() - 1) {
+            if (!set.contains(s.charAt(r + 1))) {
+                set.add(s.charAt(r + 1));
+                r += 1;
+            } else {
+                set.remove(s.charAt(l));
+                l += 1;
+            }
+            int len = r - l + 1;
+            if (len > max) max = len;
+        }
+        return max;
+    }
 
     public static int maxDistinctSubstringLengthInSessions(String sessionString) {
         // Write your code here
-        if (sessionString.compareTo("*") == 0 || 
-            sessionString.compareTo("") == 0) return 0; 
+        String[] tokens = sessionString.split("\\*");
         int max = 0;
-        for (int start = 0; start < sessionString.length(); start++) {
-            HashMap<Character, Character> map = new HashMap<>();
-            System.out.println("start: " + start);
-            for (int i = start; i < sessionString.length(); i++) {
-                Character c = sessionString.charAt(i);
-                if (!map.containsKey(sessionString.charAt(i))) {
-                    map.put(c, c);
-                } else {
-                    System.out.println("1 i: " + i);
-                    break;
-                }
-            }
-            if (map.size() > max) max = map.size();
-            System.out.println("i: " + sessionString.length());
+        for (String token:tokens) {
+            int maxSubLength = checkMaxDistinctSubstringLengthinCharacterString(token);
+            if (maxSubLength > max) max = maxSubLength;
+
         }
         return max;
     }
