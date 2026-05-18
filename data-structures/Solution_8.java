@@ -5,8 +5,7 @@ import java.util.*;
 public class Solution_8 {
     public static boolean isBalancedString(String s) {
         Stack<Character> stack = new Stack<>();
-        int i = 0;
-        while (i < s.length()) {
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (c == '{' || c == '(' || c == '[') {
                 stack.add((Character) c);
@@ -14,22 +13,21 @@ public class Solution_8 {
                 if (!stack.isEmpty() && stack.peek() == '{') {
                     stack.pop();
                 } else {
-                    stack.add((Character) c);
+                    return false;
                 }
             } else if (c == ')') {
                 if (!stack.isEmpty() && stack.peek() == '(') {
                     stack.pop();
                 }  else {
-                    stack.add((Character) c);
+                    return false;
                 }
             } else if (c == ']') {
                  if (!stack.isEmpty() && stack.peek() == '[') {
                     stack.pop();
                 }  else {
-                    stack.add((Character) c);
+                    return false;
                 }
             }
-            i++;
         }
         return stack.isEmpty();
     }
