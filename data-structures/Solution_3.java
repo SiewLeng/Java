@@ -5,8 +5,6 @@ import java.util.*;
 import java.util.stream.*;
 import static java.util.stream.Collectors.toList;
 
-
-
 public class Solution_3 {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -24,32 +22,25 @@ public class Solution_3 {
                 throw new RuntimeException(ex);
             }
         });
-        int startRow = 0;
-        int n = 3; // size of the subArray height and width
-        int max = Integer.MIN_VALUE;
+        int max = 0;
         int m = 6; // size of the array height and width
-        while (startRow < m) {
-            int subArraySum = 0;
-            for (int i = startRow; i < startRow + n; i++) {
-                for (int j = 0; j < n; j++) {
-                    subArraySum += arr.get(i).get(j);
+        int endIndex = m - 3;
+        for (int i = 0; i <= endIndex; i++) {
+            for (int j = 0; j <= endIndex; j++) {
+                int sum = 0;
+                for (int col = j; col < j + 3; col++) {
+                    sum += arr.get(i).get(col);
+                    sum += arr.get(i+2).get(col);
+                }
+                sum += arr.get(i+1).get(j+1);
+                if (i == 0 && j == 0) {
+                    max = sum;
+                } else {
+                    if (sum > max) max = sum;
                 }
             }
-            if (subArraySum > max) {
-                max = subArraySum;
-            }
-            for (int j = n; j < m; j++) {
-                for (int i = startRow; i < startRow + n; i++) {
-                    subArraySum += arr.get(i).get(j) -  arr.get(i).get(j - n);
-                }
-                if (subArraySum > max) {
-                    max = subArraySum;
-                }
-            }
-            startRow += n;
         }
         System.out.println(max);
-
         bufferedReader.close();
     }
 }
