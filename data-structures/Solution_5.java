@@ -59,5 +59,6 @@ public class Solution_5 {
                 System.out.println("NO");
             }
         }
+        sc.close();
     }
 }
