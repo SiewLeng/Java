@@ -25,6 +25,7 @@ public class Solution_2 {
             if (subArraySum < 0) {
                 count++;
             }
+            // uses fixed sliding window of fixed size - subArraySize
             for (int i = subArraySize; i < arr.length; i++) {
                 subArraySum = arr[i] + subArraySum - arr[i - subArraySize];
                 if (subArraySum < 0) {
