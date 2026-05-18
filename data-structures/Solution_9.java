@@ -23,5 +23,6 @@ public class Solution_9 {
             set.add(arr);
             System.out.println(set.size());
         }
+        sc.close();
     }
 }
