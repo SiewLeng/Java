@@ -53,5 +53,6 @@ public class Solution_12 {
         for (Student student: students) {
             System.out.println(student.name);
         }
+        sc.close();
     }
 }
