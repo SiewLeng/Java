@@ -40,5 +40,6 @@ public class Solution_8 {
             boolean isBalanced = isBalancedString(s);
             System.out.println(isBalanced? "true": "false" );
         }
+        sc.close();
     }
 }
