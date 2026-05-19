@@ -10,6 +10,8 @@ public class Solution_2 {
         int n = sc.nextInt();
         String s = sc.nextLine();
         s += sc.nextLine();
+        sc.close();
+
         String[] arrString = s.split(" ");
         int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
