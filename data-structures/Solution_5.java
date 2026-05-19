@@ -18,10 +18,8 @@ public class Solution_5 {
             if (index - 1 >= 0) {
                 indexes.add(index - 1);
             }
-            if (index <= arr.length - 2) {
-                indexes.add(index + leap);
-                indexes.add(index + 1);
-            }
+            indexes.add(index + leap);
+            indexes.add(index + 1);
             for (int i:indexes) {
                 if (!visited.contains(i)) {
                     // not visited yet
