@@ -13,6 +13,7 @@ public class Solution_13 {
         for (int i = 0; i < m; i++) {
             arr[i] = sc.nextInt();
         }
+        sc.close();
 
         Deque<Integer> deque = new LinkedList<>();
         Map<Integer, Integer> mapCount = new HashMap<>();
